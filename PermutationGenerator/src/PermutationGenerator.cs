@@ -80,7 +80,7 @@ namespace PermutationGenerator
                     // Skip empty cells
                     if (!string.IsNullOrWhiteSpace(columns[colIdx]))
                     {
-                        result[colIdx].Add(columns[colIdx]);
+                        result[colIdx].Add(columns[colIdx].Trim());
                     }
                 }
             }

@@ -90,7 +90,7 @@ namespace PermutationGenerator.Test
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Any());
 
-            var expectedData = new List<string>() { "admin;1;", "admin;3;", "root;1;", "root;3;", "dev;1;", "dev;3" };
+            var expectedData = new List<string>() { "admin;1;", "admin;3;", "rOot;1;", "rOot;3;", "dev;1;", "dev;3;" };
             ValidateExpectedData(expectedData, result);
         }
         #endregion

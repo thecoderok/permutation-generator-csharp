@@ -10,7 +10,7 @@ namespace PermutationGenerator
     /// </summary>
     public static class Generator
     {
-        private const string CsvDelimiter = ",";
+        public const string CsvDelimiter = ",";
 
         public static IEnumerable<IEnumerable<string>> GetPermutations(string pathToCsvFile, string csvDelimiter = CsvDelimiter)
         {

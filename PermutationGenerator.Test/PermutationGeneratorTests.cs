@@ -15,28 +15,28 @@ namespace PermutationGenerator.Test
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestPathToFileNull()
         {
-            PermutationGenerator.Generator.GetPermutations(null);
+            PermutationGenerator.Generator.GetPermutationsForFile(null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestPathToFileEmpty()
         {
-            PermutationGenerator.Generator.GetPermutations(" ");
+            PermutationGenerator.Generator.GetPermutationsForFile(" ");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestPathToCsvSeparatorNull()
         {
-            PermutationGenerator.Generator.GetPermutations(null);
+            PermutationGenerator.Generator.GetPermutationsForFile(null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestPathToCsvSeparatorEmpty()
         {
-            PermutationGenerator.Generator.GetPermutations(" ");
+            PermutationGenerator.Generator.GetPermutationsForFile(" ");
         }
         #endregion
 
@@ -46,28 +46,28 @@ namespace PermutationGenerator.Test
         [ExpectedException(typeof(FileNotFoundException))]
         public void TestFileNotFound()
         {
-            PermutationGenerator.Generator.GetPermutations("dummypath");
+            PermutationGenerator.Generator.GetPermutationsForFile("dummypath");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestFileEmpty()
         {
-            PermutationGenerator.Generator.GetPermutations("InputEmpty.txt");
+            PermutationGenerator.Generator.GetPermutationsForFile("InputEmpty.txt");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestFileHeaderOnly()
         {
-            PermutationGenerator.Generator.GetPermutations("InputHeaderOnly.txt");
+            PermutationGenerator.Generator.GetPermutationsForFile("InputHeaderOnly.txt");
         }
 
         [TestMethod]
         [ExpectedException(typeof(InvalidDataException))]
         public void TestFileMalformedAndDelimiter()
         {
-            PermutationGenerator.Generator.GetPermutations("InputMalformed.txt", ";");
+            PermutationGenerator.Generator.GetPermutationsForFile("InputMalformed.txt", ";");
         }
         #endregion
 
@@ -75,7 +75,7 @@ namespace PermutationGenerator.Test
         [TestMethod]
         public void TestPermutations()
         {
-            var result = PermutationGenerator.Generator.GetPermutations("InputNormal.txt");
+            var result = PermutationGenerator.Generator.GetPermutationsForFile("InputNormal.txt");
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Any());
 
@@ -86,7 +86,7 @@ namespace PermutationGenerator.Test
         [TestMethod]
         public void TestPermutationsSemiolon()
         {
-            var result = PermutationGenerator.Generator.GetPermutations("InputSemicolon.txt", ";");
+            var result = PermutationGenerator.Generator.GetPermutationsForFile("InputSemicolon.txt", ";");
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Any());
 

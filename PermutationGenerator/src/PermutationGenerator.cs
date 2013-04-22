@@ -12,7 +12,7 @@ namespace PermutationGenerator
     {
         public const string CsvDelimiter = ",";
 
-        public static IEnumerable<IEnumerable<string>> GetPermutations(string pathToCsvFile, string csvDelimiter = CsvDelimiter)
+        public static IEnumerable<IEnumerable<string>> GetPermutationsForFile(string pathToCsvFile, string csvDelimiter = CsvDelimiter)
         {
             if (string.IsNullOrWhiteSpace(pathToCsvFile))
             {
@@ -27,6 +27,23 @@ namespace PermutationGenerator
             var dataFromFile = ReadCsvFile(pathToCsvFile, csvDelimiter);
 
             return GenerateCartesianProduct(dataFromFile);
+        }
+
+        public static IEnumerable<IEnumerable<string>> GetPermutations(string[] content,
+                                                                       string csvDelimiter = CsvDelimiter)
+        {
+            if (content == null || content.Length == 0)
+            {
+                throw new ArgumentNullException("content");
+            }
+
+            if (string.IsNullOrWhiteSpace(csvDelimiter))
+            {
+                throw new ArgumentNullException("csvDelimiter");
+            }
+
+            var tempData = ParseCsvData(content, csvDelimiter, 0);
+            return GenerateCartesianProduct(tempData);
         }
 
         /// <summary>
@@ -53,7 +70,7 @@ namespace PermutationGenerator
             return ParseCsvData(fileContent, csvDelimiter);
         }
 
-        private static IEnumerable<IList<string>> ParseCsvData(IList<string> fileContent, string csvDelimiter)
+        private static IEnumerable<IList<string>> ParseCsvData(IList<string> fileContent, string csvDelimiter, int firstRow = 1)
         {
             // Assuming first line is the header, get number of columns
             var columnNumber = fileContent[0].Split(csvDelimiter.ToCharArray()).Length;
@@ -66,7 +83,7 @@ namespace PermutationGenerator
             }
 
             // Parse lines from CSV file, row by row
-            for (int rowIdx = 1; rowIdx < fileContent.Count; rowIdx++)
+            for (int rowIdx = firstRow; rowIdx < fileContent.Count; rowIdx++)
             {
                 var columns = fileContent[rowIdx].Split(csvDelimiter.ToCharArray());
                 // Number of columns is bigger that number of columns in header

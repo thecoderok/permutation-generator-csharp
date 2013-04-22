@@ -1,21 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
+using PermutationGenerator;
 
 namespace Permutations
 {
     class Program
     {
-        private static string filePath = @"C:\Users\vitalig\Documents\tst.csv";
+        [STAThread]
         static void Main(string[] args)
         {
             // Check if there are any command line arguments
             if (args == null || args.Length == 0)
             {
+                // Run UI if there are no arguments
                 ShowUsage();
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new GeneratorUI());
                 return;
             }
             // If no arguments or argument is '/?' or 'help' or '?' or '-help' -Show help
@@ -58,7 +62,7 @@ namespace Permutations
                 delimiter = delimiterParam;
             }
 
-            var permutations = PermutationGenerator.Generator.GetPermutations(inputFile, delimiter);
+            var permutations = PermutationGenerator.Generator.GetPermutationsForFile(inputFile, delimiter);
             var results = ProcessResults(permutations, delimiter);
             // Output results or save to file
             if (isPrintResults)

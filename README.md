@@ -3,6 +3,8 @@ permutation-generator-csharp
 
 Permutations generator written in C#. Allows to generate permutations of the data stored in CSV files.
 
+Download binaries: http://sdrv.ms/XZ922m
+
 This application has command line and windows forms interfaces.
 
 It allows to generate permutations for data stored in comma-separated format (CSV). For example for file with contents:

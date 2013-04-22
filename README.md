@@ -39,14 +39,14 @@ Usage: PermutationsGenerator.exe <inputCsvFile> -print|<resultFileName> [<delimi
 
 Samples:
 
-Print permutation to screen:
+* Print permutation to screen:
 
-  PermutationsGenerator.exe c:\temp\input.scv -print
+PermutationsGenerator.exe c:\temp\input.scv -print
 
-Save permutation to file:
+* Save permutation to file:
 
-  PermutationsGenerator.exe c:\temp\input.scv c:\temp\output.csv
+PermutationsGenerator.exe c:\temp\input.scv c:\temp\output.csv
 
-Use not standard delimiter (comma used by default):
+* Use not standard delimiter (comma used by default):
 
-  PermutationsGenerator.exe c:\temp\input.scv c:\temp\output.csv ;
+PermutationsGenerator.exe c:\temp\input.scv c:\temp\output.csv ;
